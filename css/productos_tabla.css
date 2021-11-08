@@ -1,0 +1,66 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ body{
+    background-color: #ffdd90;
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190830/pngtree-color-network-with-dots-on-white-background-image_310198.jpg");
+} 
+
+.titulo{
+
+  margin: 40px 0;
+}
+
+.form-register{
+  width: 400px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: #060483
+
+}
+
+.footer{
+
+  border: 5px;
+  border-color: #060483;
+  padding: 12px;
+  background: white ;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.btn-edit {
+  width: 50%;
+  border: none;
+  padding: 12px;
+  margin: 16px 0;
+  font-size: 15px;
+  text-align: center;
+  float: left;
+}
+
+.btn-delete {
+
+  float: right;
+  width: 50%;
+  border: none;
+  padding: 12px;
+  margin: 16px 0;
+  font-size: 15px;
+
+}
+
+#fas {
+  text-align:center;
+  display: block;
+  width: 10%;
+  height: 10%;
+  margin: auto;
+}
