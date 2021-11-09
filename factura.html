@@ -70,8 +70,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id='addr0'>
-                                <td>1</td>
+                            <tr id="row">
+                                <td id="indice">1</td>
                                 <td>
                                     <select type="text" name="clienteRegistrado" id="clienteRegistrado"
                                         class="form-control"></select>
@@ -100,8 +100,9 @@
             </div>
             <div class="row clearfix">
                 <div class="col-md-12">
-                    <button id="agregarPro" class="btn btn-default pull-left">Agregar Nuevo Producto</button>
-                    <button id='totalPro' class="pull-center btn btn-default">Eliminar Producto</button>
+                    <button id="agregarProducto" type="button" class="btn btn-success pull-left">Agregar Nuevo
+                        Producto</button>
+                    <button id='eliminar' class="pull-center btn btn-danger">Eliminar Producto</button>
                     <button id="calcularVenta" type="submit" class="pull-right btn btn-primary">Calcular Valor</button>
 
                 </div>
@@ -123,7 +124,7 @@
                             <tr>
                                 <th class="text-center">TOTAL</th>
                                 <td class="text-center"><input type="number" name="totalProductoFinal"
-                                        id="totalProductoFinal" class="form-control" readonly /></td>
+                                        placeholder="0.00" id="totalProductoFinal" class="form-control" readonly /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -200,6 +201,57 @@
 
             });
 
+        });
+
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#agregarProducto").click(function () {
+                var data = [];
+                var cantidad = 0;
+                //var cliente = document.getElementById('clienteRegistrado').value;
+                //var indice = document.getElementById('indice').value;
+                var nombre = document.getElementById('nombreProducto').value;
+                var cant = document.getElementById('cantidadProducto').value;
+                var precio = parseInt(document.getElementById('valorProducto').value);
+                var result = document.getElementById('totalProducto').value = total;
+                var total = precio * cant;
+                data.push(
+                    {
+                        "indice": cantidad,
+                        //"cliente": clienteReg,
+                        "nombre": nombre,
+                        "cantidad": cant,
+                        "valor": precio,
+                        "total": result
+                    }
+                );
+                //var id_row = cantidad;
+                var fila = '<tr><td> ' + cantidad + '></td><td> ' + ' ' + '</td><td><select type="text" name="nombreProducto" id="nombreProducto" class="form-control"></select></td>' + '<td><input type="number" id="valorProducto" name="valorProducto" placeholder="Ingrese Precio" class="form-control">' +
+                '</td><td> <input type="number" id="totalProducto" name="totalProducto" placeholder="0.00" class="form-control"></td>' + '</td><td> <input type="number" id="totalProducto" name="totalProducto" placeholder="0.00"class="form-control"></td></tr>';
+                $("#tab_logic").append(fila);
+                $("#indice").val('');
+                $("#nombreProducto").val('');
+                $("#cantidadProducto").va('');
+                $("#valorProducto").val('');
+                $("#totalProducto").val('');
+                $("#nombreProducto").focus;
+                cantidad++;
+
+                if (cant != 'null') {
+                        var total = precio * cant;
+                        var result = document.getElementById('totalProducto').value = total;
+                }
+
+
+
+                function save() {
+
+                };
+
+            });
         });
 
     </script>
