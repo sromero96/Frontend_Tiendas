@@ -11,6 +11,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
         integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
         crossorigin="anonymous"></script>
+    <script src="/js/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="/js/agregarProducto.js"></script>
 </head>
 
 <body>
@@ -47,13 +49,6 @@
     <h1 class="text-center">FACTURA POS</h1>
     <hr>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-    <!------ Include the above in your HEAD tag ---------->
-
-
     <form action="http://localhost:3000/ventas" method="POST">
         <div class="container">
             <div class="row clearfix">
@@ -62,7 +57,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center"> # </th>
-                                <th class="text-center"> Cliente </th>
                                 <th class="text-center"> Producto </th>
                                 <th class="text-center"> Valor </th>
                                 <th class="text-center"> Cantidad </th>
@@ -73,13 +67,13 @@
                             <tr id="row">
                                 <td id="indice">1</td>
                                 <td>
-                                    <select type="text" name="clienteRegistrado" id="clienteRegistrado"
-                                        class="form-control"></select>
-                                </td>
-
-                                <td>
                                     <select type="text" name="nombreProducto" id="nombreProducto" class="form-control"
-                                        required></select>
+                                        required>
+                                        <option value="Hola 1">Hola 1</option>
+                                        <option value="Hola 2">Hola 2</option>
+                                        <option value="Hola 3">Hola 3</option>
+                                        <option value="Hola 4">Hola 4</option>
+                                    </select>
                                 </td>
                                 <td>
                                     <!-- <select type="number" name="valorProducto" id="valorProducto" class="form-control"
@@ -90,8 +84,8 @@
                                 <td><input type="number" id="cantidadProducto" name="cantidadProducto"
                                         placeholder='Ingrese Cantidad' class="form-control" required>
                                 </td>
-                                <td><input type="number" id="totalProducto" name="totalProducto" placeholder="0.00"
-                                        class="form-control" required></td>
+                                <td><input id="totalProducto" name="totalProducto" placeholder="0.00"
+                                        class="form-control" readonly></td>
                             </tr>
                             <!-- <tr id='addr1'></tr> -->
                         </tbody>
@@ -134,8 +128,6 @@
     </form>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function () {
@@ -160,20 +152,6 @@
             });
         });
     </script>
-
-    <!-- <script>
-        $(document).ready(function () {
-            $.get('http://localhost:3000/productos', function (data, error) {
-                var optionsPre = '';
-                for (var i = 0; i < data.length; i++) {
-                    optionsPre = optionsPre + '<option value="' + data[i]._id + '">' + data[i].valor + '</option>';
-                }
-                $('#valorProducto').append(optionsPre);
-            });
-        });
-    </script> -->
-
-
     <script>
         $(document).ready(function () {
             $('#calcularVenta').on('click', function () {
@@ -204,59 +182,6 @@
         });
 
     </script>
-
-    <script>
-
-        $(document).ready(function () {
-            $("#agregarProducto").click(function () {
-                var data = [];
-                var cantidad = 0;
-                //var cliente = document.getElementById('clienteRegistrado').value;
-                //var indice = document.getElementById('indice').value;
-                var nombre = document.getElementById('nombreProducto').value;
-                var cant = document.getElementById('cantidadProducto').value;
-                var precio = parseInt(document.getElementById('valorProducto').value);
-                var result = document.getElementById('totalProducto').value = total;
-                var total = precio * cant;
-                data.push(
-                    {
-                        "indice": cantidad,
-                        //"cliente": clienteReg,
-                        "nombre": nombre,
-                        "cantidad": cant,
-                        "valor": precio,
-                        "total": result
-                    }
-                );
-                //var id_row = cantidad;
-                var fila = '<tr><td> ' + cantidad + '></td><td> ' + ' ' + '</td><td><select type="text" name="nombreProducto" id="nombreProducto" class="form-control"></select></td>' + '<td><input type="number" id="valorProducto" name="valorProducto" placeholder="Ingrese Precio" class="form-control">' +
-                '</td><td> <input type="number" id="totalProducto" name="totalProducto" placeholder="0.00" class="form-control"></td>' + '</td><td> <input type="number" id="totalProducto" name="totalProducto" placeholder="0.00"class="form-control"></td></tr>';
-                $("#tab_logic").append(fila);
-                $("#indice").val('');
-                $("#nombreProducto").val('');
-                $("#cantidadProducto").va('');
-                $("#valorProducto").val('');
-                $("#totalProducto").val('');
-                $("#nombreProducto").focus;
-                cantidad++;
-
-                if (cant != 'null') {
-                        var total = precio * cant;
-                        var result = document.getElementById('totalProducto').value = total;
-                }
-
-
-
-                function save() {
-
-                };
-
-            });
-        });
-
-    </script>
-
-
     <footer class="footer">
         <div class="container">
             <div class="row">
